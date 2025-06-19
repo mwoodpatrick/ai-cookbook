@@ -2,6 +2,45 @@
 
 This Cookbook contains examples and tutorials to help developers build AI systems, offering copy/paste code snippets that you can easily integrate into your own projects.
 
+## Setup environment
+
+You should first create and activate a virtual environment:
+
+```sh
+$ nix-shell
+$ pip install --upgrade pip # ensure we are using latest pip
+$ python -m venv venv/ # create virtual environment
+$ source venv/bin/activate # activate virtual environment
+$ pip install -r requirements.txt # install requirements
+```
+
+Install the pinned dependencies from `requirements.txt`:
+
+```sh
+(venv) $ python -m pip install -r requirements.txt
+```
+
+Then you can execute the provided Python scripts, for example:
+
+```sh
+(venv) $ python basic_logging.py
+```
+
+## Rendering Docs
+
+To convert the README.md to html use:
+
+```sh
+pandoc README.md -o README.html
+```
+
+To display the generated html file use:
+
+```sh
+firefox README.html &
+```
+
+
 ## About Me
 
 Hi! I'm Dave, AI Engineer and founder of Datalumina®. On my [YouTube channel](https://www.youtube.com/@daveebbelaar?sub_confirmation=1), I share practical tutorials that teach developers how to build AI systems that actually work in the real world. Beyond these tutorials, I also help people start successful freelancing careers. Check out the links below to learn more!
