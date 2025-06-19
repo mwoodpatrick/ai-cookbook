@@ -8,9 +8,9 @@ You should first create and activate a virtual environment:
 
 ```sh
 $ nix-shell
-$ pip install --upgrade pip # ensure we are using latest pip
 $ python -m venv venv/ # create virtual environment
 $ source venv/bin/activate # activate virtual environment
+$ pip install --upgrade pip # ensure we are using latest pip
 $ pip install -r requirements.txt # install requirements
 ```
 
