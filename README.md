@@ -12,6 +12,8 @@ $ python -m venv venv/ # create virtual environment
 $ source venv/bin/activate # activate virtual environment
 $ pip install --upgrade pip # ensure we are using latest pip
 $ pip install -r requirements.txt # install requirements
+$ git submodule add https://github.com/mwoodpatrick/google-gemini-cookbook google-gemini-cookbook
+$ pip freeze > requirements.txt # optionally update requirements.txt with current versions of all packages
 ```
 
 Install the pinned dependencies from `requirements.txt`:

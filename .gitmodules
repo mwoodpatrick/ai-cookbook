@@ -1,0 +1,3 @@
+[submodule "google-gemini-cookbook"]
+	path = google-gemini-cookbook
+	url = https://github.com/mwoodpatrick/google-gemini-cookbook
