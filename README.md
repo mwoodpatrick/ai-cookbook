@@ -6,6 +6,18 @@ This Cookbook contains examples and tutorials to help developers build AI system
 
 You should first create and activate a virtual environment:
 
+Setup submoduls:
+    
+    git submodule update --init
+
+or if cloning initial repo:
+
+    git clone --recurse-submodules <repo_url>
+
+The .gitmodules file provides the definition (path, URL, branch) of what submodules a repo needs, and 
+the gitlink entry in the superproject's history records the exact commit of that submodule the 
+superproject is currently using
+
 ```sh
 $ nix-shell
 $ python -m venv venv/ # create virtual environment
