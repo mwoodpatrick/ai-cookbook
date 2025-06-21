@@ -11,7 +11,7 @@ def generate():
         api_key=os.environ.get("GEMINI_API_KEY"),
     )
 
-    model='gemini-2.0-flash-001', 
+    model="gemini-2.0-flash-001"
     # model = "gemini-2.5-pro"
 
     contents = [
@@ -23,9 +23,9 @@ def generate():
         ),
     ]
     generate_content_config = types.GenerateContentConfig(
-        thinking_config = types.ThinkingConfig(
-            thinking_budget=-1,
-        ),
+        # thinking_config = types.ThinkingConfig(
+        #    thinking_budget=-1,
+        # ),
         response_mime_type="text/plain",
     )
 
