@@ -1,3 +1,5 @@
+# (quickstart)[https://ai.google.dev/gemini-api/docs/quickstart]
+# (examples)[https://ai.google.dev/gemini-api/prompts]
 # https://googleapis.github.io/python-genai/
 # https://pypi.org/project/google-genai/
 #
@@ -21,9 +23,18 @@ import os
 client = genai.Client()
 
 response = client.models.generate_content(
+    # (models)[https://ai.google.dev/gemini-api/docs/models]
+    # (gemini-2.5-flash)[https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash]
     model='gemini-2.0-flash-001', 
+    # model="gemini-2.5-flash",
     # model='gemini-2.5-pro', 
-    contents='Why is the sky blue?'
+    contents='Why is the sky blue?',
+    # Thinking is only available on Gemini 2.5 series models and can't be disabled on Gemini 2.5 Pro
+    # only use for 2.5 models, czn't disable for pro
+    # disable only enable for 
+    # config=types.GenerateContentConfig(
+    #    thinking_config=types.ThinkingConfig(thinking_budget=0) # Disables thinking
+    # ),
 )
 
 print(response.text)
