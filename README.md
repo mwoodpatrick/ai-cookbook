@@ -25,6 +25,8 @@ $ source venv/bin/activate # activate virtual environment
 $ pip install --upgrade pip # ensure we are using latest pip
 $ pip install -r requirements.txt # install requirements
 $ git submodule add https://github.com/mwoodpatrick/google-gemini-cookbook google-gemini-cookbook
+$ git submodule add https://github.com/mwoodpatrick/python-genai
+$ pip install -e patterns/workflows/Gemini-api-integration/python-genai/
 $ pip freeze > requirements.txt # optionally update requirements.txt with current versions of all packages
 ```
 
