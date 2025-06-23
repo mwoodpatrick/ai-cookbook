@@ -19,7 +19,8 @@ the gitlink entry in the superproject's history records the exact commit of that
 superproject is currently using
 
 ```sh
-$ nix-shell
+# $ nix-shell
+$ nix develop
 $ python -m venv venv/ # create virtual environment
 $ source venv/bin/activate # activate virtual environment
 $ pip install --upgrade pip # ensure we are using latest pip

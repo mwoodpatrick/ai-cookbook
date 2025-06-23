@@ -11,6 +11,7 @@ in pkgs.mkShell {
       python-pkgs.google-genai
     ]))
     pkgs.pandoc
+    pkgs.ruff # A modern Python linter
   ];
   # Optional: Add any additional Python packages you need
   shellHook = ''

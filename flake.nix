@@ -14,7 +14,28 @@
   outputs = { self, nixpkgs, microvm }:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
     in {
+      # The development shell is defined here
+      devShells.${system}.default = pkgs.mkShell {
+        # Add all dependencies, including 'just'
+        buildInputs = [
+          pkgs.just
+          pkgs.nodejs_23 # try nodejs_24
+          pkgs.ruff # A modern Python linter
+           (pkgs.python313.withPackages (python-pkgs: [
+              python-pkgs.pandas
+              python-pkgs.requests
+              python-pkgs.jupyterlab
+              python-pkgs.ipykernel
+              python-pkgs.loguru
+              python-pkgs.google-genai
+            ]))
+            pkgs.pandoc
+            pkgs.ruff # A modern Python linter
+        ];
+      };
+
       packages.${system} = {
         default = self.packages.${system}.my-microvm;
         my-microvm = self.nixosConfigurations.my-microvm.config.microvm.declaredRunner;
