@@ -31,8 +31,4 @@ hello:
 # Example: just run simple.py, just run list_models.py
 [working-directory: 'patterns/workflows/Gemini-api-integration']
 run command:
-    #!/usr/bin/env sh
-    echo "==> Running command in directory: $(pwd)"
-    echo "==> Executing: {{command}}"
-    echo "-------------------------------------"
     ./{{command}}
