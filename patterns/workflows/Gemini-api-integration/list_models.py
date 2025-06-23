@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # see python-genai/google/genai/tests/models/test_list.py
 from google import genai
 from google.genai import types

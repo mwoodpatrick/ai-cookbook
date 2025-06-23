@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # (quickstart)[https://ai.google.dev/gemini-api/docs/quickstart]
 # (examples)[https://ai.google.dev/gemini-api/prompts]
 # https://googleapis.github.io/python-genai/
@@ -18,7 +19,33 @@
 
 from google import genai
 from google.genai import types
+import sys
 import os
+import json
+
+print("--- All Environment Variables (in Alphabetical Order) ---")
+
+# os.environ is a dictionary-like object containing all environment variables.
+# We can get the keys and sort them alphabetically.
+sorted_keys = sorted(os.environ.keys())
+
+# Loop through the sorted keys and print each key-value pair.
+for key in sorted_keys:
+    value = os.environ[key]
+    print(f"  {key}={value}")
+
+print("--------------------------------------------------")
+
+api_key = os.getenv("API_KEY")
+
+if api_key:
+    print(f"✅ Successfully loaded API_KEY: ...{api_key[-4:]}")
+else:
+    print("❌ FAILED to load API_KEY from .env file.", file=sys.stderr)
+    sys.exit(1)
+
+# Your actual application code would go here
+print("\nStarting main application logic...")
 
 client = genai.Client()
 

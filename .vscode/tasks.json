@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Display WorkspaceFolder Value",
+            "type": "shell",
+            "command": "echo \"The current value of ${workspaceFolder} is: ${workspaceFolder}\"",
+            "problemMatcher": []
+        }
+    ]
+}
