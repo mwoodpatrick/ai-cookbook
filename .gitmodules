@@ -1,6 +1,9 @@
 [submodule "google-gemini-cookbook"]
-	path = google-gemini-cookbook
+	path = patterns/workflows/Gemini-api-integration/google-gemini-cookbook
 	url = https://github.com/mwoodpatrick/google-gemini-cookbook
 [submodule "patterns/workflows/Gemini-api-integration/python-genai"]
 	path = patterns/workflows/Gemini-api-integration/python-genai
 	url = https://github.com/mwoodpatrick/python-genai
+[submodule "patterns/workflows/Gemini-api-integration/generative-ai"]
+	path = patterns/workflows/Gemini-api-integration/generative-ai
+	url = https://github.com/mwoodpatrick/generative-ai.git
