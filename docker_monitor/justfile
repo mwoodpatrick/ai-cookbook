@@ -1,6 +1,9 @@
 hello:
   docker run hello-world
 
+podman_status:
+  systemctl --user status podman.socket
+
 build:
   docker build -t my-python-app .
  
