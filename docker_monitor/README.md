@@ -1,3 +1,10 @@
+# Create simple Python Docker Container
+
+See 
+
+1. (Setting Up Docker for Python Projects: A Step-by-Step Guide)[https://www.geeksforgeeks.org/python/setting-up-docker-for-python-projects-a-step-by-step-guide/]
+2. (How to “Dockerize” Your Python Applications)[https://www.docker.com/blog/how-to-dockerize-your-python-applications/]
+
 Prompt
 
 Create a python script that launches 3 docker containers that execute a "sleep infinity" command
