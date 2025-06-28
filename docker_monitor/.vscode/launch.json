@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Docker Monitor Script",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/docker_monitor.py", // Path to your script
+            "console": "integratedTerminal", // Important for seeing logs and Ctrl+C interaction
+            "justMyCode": true, // Set to false if you want to step into Docker SDK code
+            "python": "${workspaceFolder}/venv/bin/python", // Explicit path to your virtual environment's interpreter (Linux/macOS)
+            // Or for Windows: "python": "${workspaceFolder}/venv/Scripts/python.exe",
+            "env": {
+                // Optional: If Docker daemon is not accessible via default socket,
+                // you might need to specify DOCKER_HOST, DOCKER_TLS_VERIFY, etc.
+                // Example (for specific cases, usually not needed for local Docker Desktop):
+                // "DOCKER_HOST": "tcp://127.0.0.1:2375"
+            }
+        }
+    ]
+}
