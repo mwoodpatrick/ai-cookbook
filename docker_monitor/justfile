@@ -1,3 +1,6 @@
+hello:
+  docker run hello-world
+
 build:
   docker build -t my-python-app .
  

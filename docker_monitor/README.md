@@ -1,3 +1,127 @@
+# Docker SDK
+
+(Docker)[https://docs.docker.com/reference/cli/docker/]
+{Develop faster. Run anywhere.}[https://www.docker.a/]
+(NixOS - Docker)[https://wiki.nixos.org/wiki/Docker/en]
+(Effortless Container Management for Kubernetes, Docker and Podman)[https://www.portainer.io/]
+(Docker Extension Pack for Visual Studio Code)[https://github.com/microsoft/vscode-docker#docker-extension-pack-for-visual-studio-code]
+(Develop with Docker Engine SDKs)[https://docs.docker.com/reference/api/engine/sdk/]
+(Docker meets Python A look on the Docker SDK for Python)[https://ep2019.europython.eu/media/conference/slides/HVM9f5G-docker-meets-python-a-look-on-the-docker-sdk-for-python.pdf]
+(Docker SDK for Python)[https://docker-py.readthedocs.io/en/a/index.html]
+
+# Podman with Python
+
+Of course. Interacting with Podman from Python is a common and powerful way to automate container management.
+
+The recommended and most robust method is to use Podman's Docker-compatible REST API. This allows you to use the well-established docker Python library to communicate with the Podman service, just as you would with Docker.
+
+Here is a complete guide and a Python script to get you started. The script will demonstrate fundamental operations like pulling images, running containers, listing them, and cleaning up.
+Python Script for Podman
+Jun 28, 4:15 PM
+
+I've created a Python script that uses the docker library to communicate with your local Podman service.
+
+This script demonstrates the full lifecycle of a container:
+
+Connection: It locates and connects to the Podman socket.
+
+Image Pull: It pulls the hello-world image from Docker Hub.
+
+Container Run: It creates and starts a new container from that image.
+
+Inspection: It lists the running containers and fetches the logs from our new container.
+
+Cleanup: It reliably stops and removes the container it created, even if errors occur during the process.
+
+Before running the script, make sure to follow the setup instructions I've included as comments at the top of the file. The most critical step is enabling the podman.socket service, which exposes the API that this script needs to function.
+
+
+# NixOS
+
+That's a classic Docker error\! It means your Python script (using the Docker SDK) can't communicate with the Docker daemon (the background service that manages your containers). On NixOS, the cause is almost always related to how the Docker service is configured and user permissions.
+
+Here’s a step-by-step guide to troubleshoot and fix this on your NixOS system.
+
+### 1\. Ensure the Docker Daemon is Enabled and Running
+
+First, the Docker service needs to be enabled in your main NixOS configuration file.
+
+**A. Edit your `configuration.nix`:**
+Open `/etc/nixos/configuration.nix` and make sure you have the following line:
+
+```nix
+# /etc/nixos/configuration.nix
+
+virtualisation.docker.enable = true;
+```
+
+**B. Rebuild your system:**
+After adding that line, you need to apply the changes by rebuilding your system:
+
+```bash
+sudo nixos-rebuild switch
+```
+
+**C. Check if the service is active:**
+Once rebuilt, verify that the Docker daemon is running correctly:
+
+```bash
+systemctl status docker.service
+```
+
+You should see output indicating that the service is `active (running)`.
+
+### 2\. Grant Your User Permission to Access Docker
+
+By default, only the `root` user can communicate with the Docker daemon. To allow your regular user to do so without `sudo`, you must add your user to the `docker` group.
+
+**A. Edit your `configuration.nix`:**
+Add your username to the `docker` group. Replace `<your_username>` with your actual username.
+
+```nix
+# /etc/nixos/configuration.nix
+
+users.users.<your_username>.extraGroups = [ "docker" ];
+```
+
+*(If you already have an `extraGroups` line, just add `"docker"` to the list.)*
+
+**B. Rebuild your system again:**
+
+```bash
+sudo nixos-rebuild switch
+```
+
+**C. Apply the group changes:**
+For the group change to take full effect, you need to **log out and log back in**, or simply open a new terminal session. You can verify you're in the group by running:
+
+```bash
+groups
+# You should see 'docker' in the list of groups.
+```
+
+### 3\. Verify the Docker Socket
+
+After completing the steps above, you should be able to connect. The Python SDK, by default, tries to connect to the Docker daemon via a Unix socket located at `/var/run/docker.sock`. Let's make sure it's working.
+
+Run this simple command:
+
+```bash
+docker ps
+```
+
+If this command runs successfully without `sudo` and shows an empty list of containers (or your running containers), your permissions are correct, and the Python SDK should now work.
+
+### Summary of Fixes
+
+For most NixOS users, the solution is to have these two lines in `/etc/nixos/configuration.nix` (replacing `<your_username>`):
+
+```nix
+virtualisation.docker.enable = true;
+users.users.<your_username>.extraGroups = [ "docker" ];
+```
+
+Then run `sudo nixos-rebuild switch` and log out/in. This should resolve the "Could not connect to Docker daemon" error.
 # Create simple Python Docker Container
 
 See 
