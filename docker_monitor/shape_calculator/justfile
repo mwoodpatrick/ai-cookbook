@@ -2,7 +2,10 @@ build:
   docker build -t shape-calculator-app .
 
 start_server:
-  docker run -p 8000:8000 -name shape_calculator shape-calculator-app
+  docker run -p 8000:8000 --rm --name shape_calculator shape-calculator-app
+
+stop_server:
+  docker stop shape_calculator
 
 circle:
 	curl -X POST "http://localhost:8000/calculate_area/" \
