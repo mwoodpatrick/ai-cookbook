@@ -1,2 +1,23 @@
 build:
-  docker build -f Dockerfile
+  docker build -t shape-calculator-app .
+
+start_server:
+  docker run -p 8000:8000 -name shape_calculator shape-calculator-app
+
+circle:
+	curl -X POST "http://localhost:8000/calculate_area/" \
+	     -H "Content-Type: application/json" \
+	     -d '{ "shape_type": "circle", "radius": 5 }'
+
+rectangle:
+	curl -X POST "http://localhost:8000/calculate_area/" \
+	     -H "Content-Type: application/json" \
+	     -d '{ "shape_type": "rectangle", "width": 10, "height": 4 }'
+
+triangle:
+	curl -X POST "http://localhost:8000/calculate_area/" \
+	     -H "Content-Type: application/json" \
+	     -d '{ "shape_type": "triangle", "base": 6, "height": 8 }'
+
+
+

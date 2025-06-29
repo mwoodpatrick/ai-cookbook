@@ -9,3 +9,6 @@ build:
  
 run: build
   docker run -it --rm --name my-running-app my-python-app
+
+clobber:
+  docker system prune -a
